@@ -1,25 +1,5 @@
-<template>
-  <!-- <form @submit.prevent="signIn()">
-    <div class="container">
-      <h1>Login Page</h1>
-      <label>Username : </label>
-      <input
-        type="text"
-        placeholder="Enter Username"
-        name="username"
-        v-model="email"
-      />
-      <label>Password : </label>
-      <input
-        type="password"
-        placeholder="Enter Password"
-        name="password"
-        v-model="password"
-      />
-      <button type="submit">Login</button>
-    </div>
-  </form> -->
-
+<template @submit.preventDefault();
+>
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -32,26 +12,28 @@
           />
           <form class="form-signin">
             <input
-              type="text"
+              type="email"
               v-model="email"
               class="form-control"
               placeholder="Email"
-              required
-              autofocus
             />
+            <div class="error" v-if="errors.email">{{ errors.email }}
+            </div>
             <input
               type="password"
               v-model="password"
               class="form-control"
-              placeholder="Password"
-              required
+              placeholder="Password"     
             />
+            <div class="error" v-if="errors.password">{{ errors.password }}
+            </div>
             <button type="submit" @click.prevent="signIn()">Sign in</button>
             <label class="checkbox pull-left">
               <input type="checkbox" value="remember-me" />
               Remember me
             </label><br>
-            <a href="http://localhost:8080/register" class="text-center new-account">Create an account </a>
+            <a href="http://localhost:8080/register" class="text-center new-account"
+            ><span style="color: black;" >Create an account</span> </a>
           </form>
         </div>
         </div>
@@ -59,12 +41,14 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "log-in",
   data() {
     return {
       email: "",
       password: "",
+      errors:[],
     };
   },
   methods: {
@@ -97,34 +81,12 @@ export default {
 };
 </script>
 <style>
-/* h1 {
-  font-size: vw;
+
+.error{
+  color: red;
+  font-weight: bold;
+  margin-left: 5rem;
 }
-button {
-  width: 100%;
-  color: black;
-  padding: 15px;
-  margin: 10px 0px;
-  border: none;
-  cursor: pointer;
-}
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  margin: 8px 0;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 2px solid green;
-  box-sizing: border-box;
-}
-button:hover {
-  opacity: 0.7;
-}
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  margin: 10px 5px;
-} */
 button {
   width: 100%;
   color: black;
