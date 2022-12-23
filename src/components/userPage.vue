@@ -1,4 +1,4 @@
-<template >
+<template  >
   <h1>{{ title }}</h1>
   <h1>{{ elem }}</h1>
   <input
@@ -17,7 +17,7 @@
         elem
       }}
       <button
-        @click="delete_item(index)"
+        @click="delete_item(index)" 
         style="
         border-radius: 10px;
           font-size: large;
@@ -30,7 +30,17 @@
       >
         delete
       </button>
+      
     </ol>
+    <button @click=" deletUserData(),delete_item(),reloadPage()" style=" 
+        border-radius: 10px;
+          font-size: large;
+          height: 45px;
+          width: auto;
+          margin-left: 5rem;
+          background-color: rgb(233 28 28);
+          color: antiquewhite;
+        ">Delete all values</button>
   </ul>
 
   <div v-for="(item, index) in user" :key="index">
@@ -40,50 +50,30 @@
     <!-- <input type="text" v-model="item.email" /> -->
     <!-- <button @click="updateData" class="buuton1">ADD</button> -->
     <div>
-      <input
-        type="text"
-        v-model="item.email"
-        style="width: 50rem; height: auto"
+      <input type="text" v-model="item.email" style="width: 50rem; height: auto"
       />
 
-      <button
-        @click="updateData()"
-        style="
-          width: auto;
-          margin-left: 5rem;
-          background-color: rgb(21 21 141);
-          color: antiquewhite;
+      <button @click="updateData()" style="width: auto;margin-left:
+       1rem;background-color: rgb(21 21 141);color: antiquewhite;
         "
       >
         Update Email
       </button>
 
-      <input
-        type="text"
-        v-model="item.password"
-        style="width: 50rem; height: auto"
+      <input type="text" v-model="item.password" style="width: 50rem; height: auto"
       />
       <button
-        @click="updateData()"
-        style="
-          width: auto;
-          margin-left: 5rem;
-          background-color: rgb(45 82 86);
-          color: antiquewhite;
+        @click="updateData()" style="width: auto;margin-left: 1rem;background-color: rgb(45 82 86);color: antiquewhite;
         "
       >
         Update Password
       </button>
       <div>
         <button
-          @click="deletData(index)"
-          style="
-            width: auto;
-            background-color: rgb(233 28 28);
-            color: antiquewhite;
+          @click="deletData(index)" style="width: auto;margin-left: 20%; background-color: rgb(233 28 28);color: antiquewhite;
           "
         >
-          Delete All
+          Delete User Account
         </button>
       </div>
     </div>
@@ -99,8 +89,10 @@ export default {
       list: [],
       userNote: [],
       Data: [],
+      elem:"",
       user: null,
       userData: null,
+      key:0
     };
   },
   computed: {
@@ -126,7 +118,7 @@ export default {
     },
     delete_item(index) {
       this.list.splice(index, 1);
-      this.Data.splice(index, 1);
+      this.Data.splice(index,1);
     },
     check() {
       if (this.new_item.length > this.max) {
@@ -134,11 +126,21 @@ export default {
       }
     },
     deletData() {
-      localStorage.removeItem("formData", this.Data[0]);
+      localStorage.removeItem("formData");
+      window.alert(" User Account Deleted");
+      window.location.reload();
+    },
+    deletUserData() {
+      localStorage.removeItem("userData", this.Data);
+    },
+    reloadPage() {
+      window.location.reload();
     },
     updateData() {
       this.Data.push(this.user);
       localStorage.setItem("formData", JSON.stringify(this.Data));
+      localStorage.setItem("formData", JSON.stringify(this.user));
+      window.alert(" User Data updated");
     },
   },
   created() {
@@ -149,6 +151,7 @@ export default {
       this.user = JSON.parse(this.userData);
     }
   },
+  
 };
 </script>
 <style>
@@ -166,7 +169,7 @@ body {
 
 .button1 {
   width: auto;
-  margin-left: 5rem;
+  margin-left: 1rem;
   background-color: #1ce959;
 }
 span {
@@ -183,7 +186,7 @@ ul {
 }
 ol {
   width: 20%;
-  border: 2px solid rgb(56, 94, 246);
+  border: 1px solid rgb(56, 94, 246);
   border-radius: 10px;
   line-height: 30px;
   font-size: 2vw;

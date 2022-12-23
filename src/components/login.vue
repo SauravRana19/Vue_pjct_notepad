@@ -1,4 +1,4 @@
-<template @submit.preventDefault();
+<template
 >
   <div class="container">
     <div class="row">
@@ -72,8 +72,13 @@ export default {
             (users) => users.password === credential.password
           );
           if (pswdIndex > -1) {
+            window.alert("Login");
             this.$router.push("/user");
           }
+        }
+        else{
+          window.alert("Invalid-user");
+
         }
       }
     },

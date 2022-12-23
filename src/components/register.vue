@@ -20,7 +20,7 @@
 
         <label><b>Password</b></label>
         <input
-          type="pswrepeat"
+          type="password"
           placeholder="Enter Password"
           v-model="password"
         />
@@ -53,6 +53,7 @@
 </template>
 <script>
 import validateRegister from "@/validation/validateRegister.js";
+// import { useStorage } from "vue3-storage-secure";
 // import signupvalidation from "@/javascript/signupvalidation";
 // import { EncryptStorage } from 'encrypt-storage';
 // import ls from "localstorage-slim";
@@ -67,10 +68,12 @@ export default {
       pswrepeat: "",
       users:[],
       errors: {},
+      
       // envryptedObject:'',
       // EncryptStorage:'',
     };
   },
+  
   methods: {
     Signup() {
         let formData = {
@@ -87,7 +90,7 @@ export default {
           this.errors = {};
           this.users.push(formData);
           localStorage.setItem("formData", JSON.stringify(this.users));
-          window.alert("Registerd");
+          window.alert("Registerd Now Sign In.. ");
         }
 
         // localStorage.setItem(encryptStorage(JSON.encryptString('formData')));
@@ -114,6 +117,12 @@ export default {
     
     },
   },
+  // setup() {
+  //   const storage = useStorage();
+
+  //   storage?.setStorageSync("test-key", "testdata22");
+  //   return {};
+  // },
 };
 </script>
 <style>
