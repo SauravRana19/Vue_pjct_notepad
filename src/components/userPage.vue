@@ -6,9 +6,9 @@
     v-model="new_item"
     @input="check"
     :placeholder="msg"
-    style="width: 50rem; height: auto"
+    style="width: 50rem; height: auto;background-color: #f1f1f1;"
   />
-  <button class="button1" @click="add_item" :disabled="new_item.length == 0">
+  <button class="button1" @click="add_item" :disabled="new_item.length == 0" style="border-radius: 10px;">
     add
   </button>
   <ul v-if="list.length > 0">
@@ -32,15 +32,15 @@
       </button>
       
     </ol>
-    <button @click=" deletUserData(),delete_item(),reloadPage()" style=" 
-        border-radius: 10px;
+    <button @click=" deletUserData(),delete_item(),reloadPage()" style="  
+        border-radius: 20px;
           font-size: large;
           height: 45px;
           width: auto;
           margin-left: 5rem;
           background-color: rgb(233 28 28);
           color: antiquewhite;
-        ">Delete all values</button>
+        ">Delete all Notepad</button>
   </ul>
 
   <div v-for="(item, index) in user" :key="index">
@@ -50,27 +50,27 @@
     <!-- <input type="text" v-model="item.email" /> -->
     <!-- <button @click="updateData" class="buuton1">ADD</button> -->
     <div>
-      <input type="text" v-model="item.email" style="width: 50rem; height: auto"
+      <input type="text" v-model="item.email" style="width: 50rem; height: auto;background-color: #f1f1f1;"
       />
 
       <button @click="updateData()" style="width: auto;margin-left:
-       1rem;background-color: rgb(21 21 141);color: antiquewhite;
+       1rem;background-color: rgb(21 21 141);color: antiquewhite;border-radius: 20px;
         "
       >
         Update Email
       </button>
 
-      <input type="text" v-model="item.password" style="width: 50rem; height: auto"
+      <input type="text" v-model="item.password" style="width: 50rem; height: auto;background-color: #f1f1f1;"
       />
       <button
-        @click="updateData()" style="width: auto;margin-left: 1rem;background-color: rgb(45 82 86);color: antiquewhite;
+        @click="updateData()" style="width: auto;margin-left: 1rem;background-color: rgb(45 82 86);color: antiquewhite;border-radius: 20px;
         "
       >
         Update Password
       </button>
       <div>
         <button
-          @click="deletData(index)" style="width: auto;margin-left: 20%; background-color: rgb(233 28 28);color: antiquewhite;
+          @click="deletData(index)" style="width: auto;margin-left: 20%; background-color: rgb(233 28 28);color: antiquewhite;border-radius: 20px;
           "
         >
           Delete User Account
@@ -164,6 +164,7 @@ li {
   margin: 0;
 }
 body {
+  
   padding: 10px;
 }
 
@@ -186,8 +187,8 @@ ul {
 }
 ol {
   width: 20%;
-  border: 1px solid rgb(56, 94, 246);
-  border-radius: 10px;
+  border-bottom: 2px solid rgb(14, 5, 5);
+
   line-height: 30px;
   font-size: 2vw;
 }

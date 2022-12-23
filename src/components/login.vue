@@ -1,6 +1,10 @@
 <template
 >
-  <div class="container">
+  <div class="container" style="margin: 2%;
+     background-color: white; 
+    margin-left: 30%;
+    width: 26rem;
+    border-radius: 20px;">
     <div class="row">
       <div class="col-sm-6 col-md-4 col-md-offset-4">
         <h1 class="text-center login-title"></h1>
@@ -16,6 +20,7 @@
               v-model="email"
               class="form-control"
               placeholder="Email"
+              style="margin-top: 10px;border-radius: 20px;"
             />
             <div class="error" v-if="errors.email">{{ errors.email }}
             </div>
@@ -23,7 +28,9 @@
               type="password"
               v-model="password"
               class="form-control"
-              placeholder="Password"     
+              placeholder="Password"
+              
+              style="margin-top: 10px;border-radius: 20px;"
             />
             <div class="error" v-if="errors.password">{{ errors.password }}
             </div>
@@ -93,12 +100,13 @@ export default {
   margin-left: 5rem;
 }
 button {
-  width: 100%;
+  border-radius: 10px;
+  width: 50%;
   color: black;
   padding: 15px;
   margin: 10px 0px;
   border: none;
-  cursor: pointer;
+
 }
 .form-signin {
   max-width: 330px;
@@ -135,6 +143,7 @@ button {
   border-top-right-radius: 0;
 }
 .account-wall {
+  border-radius: 20px;
   width: 25rem;
   margin-top: 20px;
   padding: 40px 0px 20px 0px;

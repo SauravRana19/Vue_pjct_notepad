@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="Signup()">
+    <form @submit.prevent="Signup()">
       <div class="container">
         <h1 class="h1">Register Page</h1>
         <p
@@ -33,16 +33,8 @@
           v-model="pswrepeat"
         />
         <div class="error" v-if="errors.pswrepeat">{{ errors.pswrepeat }}</div>
-        <hr />
-        <p>
-          By creating an account you agree to our
-          <a href="#">Terms & Privacy</a>.
-        </p>
 
         <button type="submit" class="registerbtn">Register</button>
-      </div>
-
-      <div class="container signin">
         <p>
           Already have an account?
           <a href="http://localhost:8080/login">Sign in</a>.
@@ -66,45 +58,45 @@ export default {
       email: "",
       password: "",
       pswrepeat: "",
-      users:[],
+      users: [],
       errors: {},
-      
+
       // envryptedObject:'',
       // EncryptStorage:'',
     };
   },
-  
+
   methods: {
     Signup() {
-        let formData = {
-          email: this.email,
-          password: this.password,
-          pswrepeat: this.pswrepeat,
-          // envryptedObject: this.envryptedObject,
-          // EncryptStorage:this.EncryptStorage,
-        };
-        const { isInvalid, errors } = validateRegister(formData);
-        if (isInvalid) {
-          this.errors = errors;
-        } else {
-          this.errors = {};
-          this.users.push(formData);
-          localStorage.setItem("formData", JSON.stringify(this.users));
-          window.alert("Registerd Now Sign In.. ");
-        }
+      let formData = {
+        email: this.email,
+        password: this.password,
+        pswrepeat: this.pswrepeat,
+        // envryptedObject: this.envryptedObject,
+        // EncryptStorage:this.EncryptStorage,
+      };
+      const { isInvalid, errors } = validateRegister(formData);
+      if (isInvalid) {
+        this.errors = errors;
+      } else {
+        this.errors = {};
+        this.users.push(formData);
+        localStorage.setItem("formData", JSON.stringify(this.users));
+        window.alert("Registerd Now Sign In.. ");
+        window.location.reload();
+      }
 
-        // localStorage.setItem(encryptStorage(JSON.encryptString('formData')));
+      // localStorage.setItem(encryptStorage(JSON.encryptString('formData')));
 
-        // localStorage.setItem(AES.encrypt(JSON.stringify(this.users)));
+      // localStorage.setItem(AES.encrypt(JSON.stringify(this.users)));
 
-        // ls.config.encrypt = true;
-        // ls.set("formData", { bar: "baz" }, { encrypt: true });
-        // ls.get("formData"); // °··ºk¢º½·¯
-        // ls.get("formData", { decrypt: true });
-        // EncryptStorage('secret-key-value', {
-        //  storageType: 'localstorage',});
+      // ls.config.encrypt = true;
+      // ls.set("formData", { bar: "baz" }, { encrypt: true });
+      // ls.get("formData"); // °··ºk¢º½·¯
+      // ls.get("formData", { decrypt: true });
+      // EncryptStorage('secret-key-value', {
+      //  storageType: 'localstorage',});
 
-     
       // let validations = new signupvalidation(
       //   this.email,
       //   this.password,
@@ -113,8 +105,7 @@ export default {
       // this.errors = validations.checkValidation();
       // if (this.errors.lenght) {
       //   return false;
-      // } 
-    
+      // }
     },
   },
   // setup() {
@@ -139,11 +130,17 @@ body {
 h1 {
   font-size: 3vw;
 }
-
+b{
+  margin-left: 10px;
+}
 /* Add padding to containers */
 .container {
+  width: 30rem;
+  margin: 2rem;
   margin-left: 30%;
   width: 30rem;
+  border-radius: 10px;
+  background-color: #f1f1f1;
 }
 
 /* Full-width input fields */
@@ -151,11 +148,11 @@ input[type="text"],
 input[type="password"],
 input[type="pswrepeat"] {
   width: 100%;
+  border-radius: 20px;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
 }
 
 input[type="text"]:focus,
